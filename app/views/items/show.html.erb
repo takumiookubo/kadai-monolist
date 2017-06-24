@@ -10,6 +10,7 @@
           <div class="buttons text-center">
             <% if logged_in?  %>
               <%= render 'ownerships/want_button', item: @item %>
+              <%= render 'ownerships/have_button', item: @item %>
             <% end %>  
           </div>
         </div>
@@ -31,7 +32,9 @@
       <div class="panel panel-default">
         <div class="panel-heading text-center">Haveしたユーザー</div>
         <div class="panel-body">
-        
+          <% @have_users.each do |user| %>
+            <%= link_to user.name, user_path(user) %>
+          <% end %>    
         </div>
       </div>  
       <p class="text-center"><%= link_to '楽天詳細ページ', @item.url, target: '_blank' %></p>
